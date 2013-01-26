@@ -1,0 +1,28 @@
+{
+	"manifest_version": 2,
+
+	"name": "Epoch Converter",
+	"description": "This extension will provide a popup showing a human readable date of a highlighted Unix timestamp.",
+	"version": "1.0",
+
+	"permissions": [
+		
+	],
+
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+            "css": ["bubble.css"],
+			"js": ["jquery.min.js", "selection.js"],
+            "all_frames": true
+		}
+	],
+    
+    "web_accessible_resources": [
+        "close.png"
+    ],
+
+	"browser_action": {
+		"default_icon": "icon.png"
+	}
+}
