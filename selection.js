@@ -1,9 +1,6 @@
 $(document).ready(function() {
     $('body').append("<div id=\"ec-bubble\"><div id=\"ec-bubble-text\"></div><div id=\"ec-bubble-close\"></div></div>");
     
-    /*var closeIconUrl = chrome.extension.getURL("close.png");
-    alert(closeIconUrl);
-    $('#ec-bubble-close').css('background-image', "url('" + closeIconUrl + "');");*/
     $('#ec-bubble-close').click(function() {
         hideBubble();
     });
@@ -57,8 +54,8 @@ function convertTimestamp(ts) {
 }
 
 function showBubble(e, text) {
-    $('#ec-bubble').css('top', e.clientY + 20 + "px");
-    $('#ec-bubble').css('left', e.clientX - 85 + "px");
+    $('#ec-bubble').css('top', e.pageY + 20 + "px");
+    $('#ec-bubble').css('left', e.pageX - 85 + "px");
     $('#ec-bubble-text').html(text);
     $('#ec-bubble').css('visibility', 'visible');
 }

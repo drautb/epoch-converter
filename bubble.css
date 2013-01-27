@@ -11,6 +11,7 @@
     top: 0;
     width: 140px;
     visibility: hidden;
+    z-index: 10000;
 }
 
 #ec-bubble-text {
