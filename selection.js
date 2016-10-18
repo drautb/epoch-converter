@@ -55,6 +55,9 @@ function convertTimestamp(ts) {
       h  = h - 12;
       amPm = "PM";
     }
+    if(h == 12) {
+      amPm = "PM";
+    }
     var mi = date.getMinutes();
     var s = date.getSeconds();
     var ms = "000000" + date.getMilliseconds();
@@ -77,6 +80,9 @@ function convertTimestampUTC(ts) {
     var amPm = "AM";
     if(h > 12) {
       h  = h - 12;
+      amPm = "PM";
+    }
+    if(h == 12) {
       amPm = "PM";
     }
     var mi = date.getUTCMinutes();
