@@ -1,18 +1,18 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 
 	"name": "Epoch Converter",
 	"description": "Provides a popup showing a human readable date of a highlighted Unix timestamp.",
-	"version": "1.0.2",
-    
-    "icons": { 
+	"version": "1.0.3",
+
+    "icons": {
         "16": "icon.png",
         "48": "icon.png",
         "128": "icon.png"
     },
 
 	"permissions": [
-		
+
 	],
 
 	"content_scripts": [
@@ -23,10 +23,6 @@
             "all_frames": true
 		}
 	],
-    
-    "web_accessible_resources": [
-        "close.png"
-    ],
 
 	"browser_action": {
 		"default_icon": "icon.png"
