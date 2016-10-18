@@ -20,7 +20,7 @@ $(document).ready(function() {
 function processSelection(e) {
     var text = getSelectedText();
 
-    if ($.isNumeric(text)) {
+    if ($.isNumeric(text) && (text.length == 10 || text.length == 13)) {
 		var humanReadableDate = convertTimestamp(text);
     var humanReadableDateUTC = convertTimestampUTC(text);
       showBubble(e, humanReadableDate + "<br/>" + humanReadableDateUTC);
@@ -40,7 +40,7 @@ function getSelectedText() {
 }
 
 function convertTimestamp(ts) {
-  var finalTs = (ts.length > 10) ? ts * 1 : ts * 1000;
+  var finalTs = (ts.length == 13) ? ts * 1 : ts * 1000;
 	var date = new Date(finalTs);
 	var dateStr = "";
 
