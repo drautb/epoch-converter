@@ -17,12 +17,3 @@
 #ec-bubble-text {
     float: left;
 }
-
-#ec-bubble-close {
-    background-image:url('chrome-extension://__MSG_@@extension_id__/close.png');
-    float: right;
-    height: 16px;
-    margin-right: -6px;
-    margin-top: -4px;
-    width: 16px;
-}

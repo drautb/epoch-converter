@@ -1,9 +1,5 @@
 $(document).ready(function() {
-    $('body').append('<div id=\"ec-bubble\"><div id=\"ec-bubble-text\"></div><div id=\"ec-bubble-close\"></div></div>');
-    
-    $('#ec-bubble-close').click(function() {
-        hideBubble();
-    });
+    $('body').append('<div id=\"ec-bubble\"><pre id=\"ec-bubble-text\"></pre></div>');
 
     $(document).click(function() {
         hideBubble();
@@ -46,7 +42,9 @@ function getSelectedText() {
 
 function convertTimestamp(ts) {
     ts = ts.length === 13 ? ts : ts * 1000;
-	return new Date(ts);
+	let date = new Date(ts).toString();
+	let index = /\d+:\d+:\d+/.exec(date).index;
+    return date.substring(0,index).trim()+"\n"+date.substring(index);
 }
 
 function showBubble(e, text) {
