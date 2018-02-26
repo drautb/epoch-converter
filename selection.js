@@ -33,7 +33,7 @@ function getSelectedText() {
 	
     if (window.getSelection) {
         text = window.getSelection().toString();
-    } else if (document.selection && document.selection.type != 'Control') {
+    } else if (document.selection && document.selection.type !== 'Control') {
         text = document.selection.createRange().text;
     }
 	
@@ -41,7 +41,7 @@ function getSelectedText() {
 }
 
 function convertTimestamp(ts) {
-    ts = ts.length === 13 ? ts : ts * 1000;
+    ts = ts.length === 13 ? parseInt(ts) : ts * 1000;
 	let date = new Date(ts).toString();
 	let index = /\d+:\d+:\d+/.exec(date).index;
     return date.substring(0,index).trim()+"\n"+date.substring(index);
