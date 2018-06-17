@@ -3,26 +3,17 @@
     border: 2px solid darkgray;
     border-radius: 4px;
     box-shadow: 0 0 20px 5px #888;
-    font-family: arial;
+    font-family: arial, sans-serif;
     font-size: 10pt;
     left: 0;
     padding: 7px;
     position: absolute;
     top: 0;
-    width: 140px;
+    width: 200px;
     visibility: hidden;
     z-index: 10000;
 }
 
 #ec-bubble-text {
     float: left;
-}
-
-#ec-bubble-close {
-    background-image:url('chrome-extension://__MSG_@@extension_id__/close.png');
-    float: right;
-    height: 16px;
-    margin-right: -6px;
-    margin-top: -4px;
-    width: 16px;
 }
