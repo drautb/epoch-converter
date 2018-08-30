@@ -18,10 +18,13 @@ $(document).ready(function() {
 function processSelection(e) {	
     var text = getSelectedText();
 
-    if ($.isNumeric(text)) {
-		var humanReadableDate = convertTimestamp(text);
-        showBubble(e, humanReadableDate);        
+    if ((text.length == 10 || text.length == 13) && $.isNumeric(text)) {
+	if (text.length == 13) {  // Handle millisecond timestamps
+	    text = text / 1000;
 	}
+        var humanReadableDate = convertTimestamp(text);
+	showBubble(e, humanReadableDate);        
+    }
 }
 
 function getSelectedText() {
