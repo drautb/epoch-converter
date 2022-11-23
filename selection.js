@@ -15,6 +15,10 @@ $(document).ready(function() {
 
 });
 
+$('body').click(function() {
+    hideBubble();
+});
+
 function processSelection(e) {	
     var text = getSelectedText();
 
