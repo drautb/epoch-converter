@@ -5,4 +5,7 @@ A simple Chrome extension to help translate Unix timestamps (seconds or millisec
 
 Available on the [Chrome Web Store][1].
 
+![](./screenshot-1.png)
+![](./screenshot-2.png)
+
 [1]: https://chrome.google.com/webstore/detail/epoch-converter/plfbhieilacgkdnphcdehdnhjenmnima?hl=en&authuser=0
