@@ -3,17 +3,20 @@
     border-radius: 6px;
     box-shadow: 0 0 20px 5px #888;
     color: black;
-    font-family: arial, sans-serif;
-    font-size: 12pt;
     left: 0;
     padding: 7px;
     position: absolute;
     top: 0;
-    width: fit-content;
     visibility: hidden;
+    width: fit-content;
     z-index: 10000;
 }
 
 #ec-bubble-text {
+    background-color: lightgray;
+    color: black;
     float: left;
+    font-family: monospace;
+    font-size: 10pt;
+    margin: 0;
 }

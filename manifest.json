@@ -1,31 +1,26 @@
 {
-	"manifest_version": 3,
-	"name": "Epoch Converter",
-	"description": "Provides a popup showing a human readable date of a highlighted Unix timestamp.",
-	"version": "1.1.0",
-	"icons": {
-		"16": "icon.png",
-		"48": "icon.png",
-		"128": "icon.png"
-	},
-	"permissions": [],
-	"optional_permissions": [],
-	"host_permissions": [],
-	"optional_host_permissions": [],
-	"content_scripts": [
-		{
-			"matches": [
-				"<all_urls>"
-			],
-			"css": [
-				"bubble.css"
-			],
-			"js": [
-				"jquery.min.js",
-				"selection.js"
-			],
-			"all_frames": true
-		}
-	],
-	"web_accessible_resources": []
+  "manifest_version": 3,
+  "name": "Epoch Converter",
+  "description": "Provides a popup showing a human readable date of a highlighted Unix timestamp.",
+  "version": "1.1.1",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "bubble.css"
+      ],
+      "js": [
+        "jquery.min.js",
+        "selection.js"
+      ],
+      "all_frames": true
+    }
+  ]
 }
