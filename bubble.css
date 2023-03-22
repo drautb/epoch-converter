@@ -1,28 +1,19 @@
 #ec-bubble {
-    background-color: whitesmoke;
-    border: 2px solid darkgray;
-    border-radius: 4px;
+    background-color: lightgray;
+    border-radius: 6px;
     box-shadow: 0 0 20px 5px #888;
-    font-family: arial;
-    font-size: 10pt;
+    color: black;
+    font-family: arial, sans-serif;
+    font-size: 12pt;
     left: 0;
     padding: 7px;
     position: absolute;
     top: 0;
-    width: 140px;
+    width: fit-content;
     visibility: hidden;
     z-index: 10000;
 }
 
 #ec-bubble-text {
     float: left;
-}
-
-#ec-bubble-close {
-    background-image:url('chrome-extension://__MSG_@@extension_id__/close.png');
-    float: right;
-    height: 16px;
-    margin-right: -6px;
-    margin-top: -4px;
-    width: 16px;
 }

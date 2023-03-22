@@ -1,8 +1,12 @@
 $(document).ready(function () {
-  $('body').append("<div id=\"ec-bubble\"><div id=\"ec-bubble-text\"></div><div id=\"ec-bubble-close\"></div></div>");
+  $('body').append('<div id="ec-bubble"><pre id="ec-bubble-text"></pre></div>');
 
-  $('#ec-bubble-close').click(function () {
+  $(document).click(function () {
     hideBubble();
+  });
+
+  $('#ec-bubble').click(function (event) {
+    event.stopPropagation();
   });
 
   $(document).dblclick(function (e) {
@@ -16,14 +20,14 @@ $(document).ready(function () {
 });
 
 function processSelection(e) {
-  var text = getSelectedText();
+  let text = getSelectedText();
 
-  if ((text.length == 10 || text.length == 13) && $.isNumeric(text)) {
+  if ($.isNumeric(text) && [10, 13].includes(text.length)) {
     if (text.length == 13) {  // Handle millisecond timestamps
       text = text / 1000;
     }
-    var humanReadableDate = convertTimestamp(text);
-    showBubble(e, humanReadableDate);
+    var date = timestampToDate(text);
+    showBubble(e, getLocalString(date), getUTCString(date));
   }
 }
 
@@ -32,38 +36,39 @@ function getSelectedText() {
 
   if (window.getSelection) {
     text = window.getSelection().toString();
-  } else if (document.selection && document.selection.type != "Control") {
+  } else if (document.selection && document.selection.type !== 'Control') {
     text = document.selection.createRange().text;
   }
 
   return text;
 }
 
-function convertTimestamp(ts) {
-  var date = new Date(ts * 1000);
-  var dateStr = "";
-
-  var d = date.getDate();
-  var m = date.getMonth() + 1;
-  var y = date.getFullYear();
-  dateStr += (m <= 9 ? '0' + m : m) + "/" + (d <= 9 ? '0' + d : d) + "/" + y + " - ";
-
-  var h = date.getHours();
-  var mi = date.getMinutes();
-  var s = date.getSeconds();
-  dateStr += (h <= 9 ? '0' + h : h) + ":" + (mi <= 9 ? '0' + mi : mi) + ":" + (s <= 9 ? '0' + s : s);
-
-  return dateStr;
+function timestampToDate(ts) {
+  ts = ts.length === 13 ? parseInt(ts) : ts * 1000;
+  return new Date(ts);
 }
 
-function showBubble(e, text) {
+function getLocalString(date) {
+  tz = date.getTimezoneOffset()
+  return `${date.getFullYear()}-${pad(date.getMonth())}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())} GMT${tz < 0 ? '+' : '-'}${pad(Math.floor(tz / 60))}:${pad(tz % 60)}`
+}
+
+function getUTCString(date) {
+  return `${date.getUTCFullYear()}-${pad(date.getUTCMonth())}-${pad(date.getUTCDate())} ${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}:${pad(date.getUTCSeconds())} GMT`
+}
+
+function pad(v) {
+  return v.toString().padStart(2, '0')
+}
+
+function showBubble(e, localDateStr, utcDateStr) {
   $('#ec-bubble').css('top', e.pageY + 20 + "px");
   $('#ec-bubble').css('left', e.pageX - 85 + "px");
-  $('#ec-bubble-text').html(text);
+  $('#ec-bubble-text').html(localDateStr + '<br/>' + utcDateStr);
   $('#ec-bubble').css('visibility', 'visible');
 }
 
 function hideBubble() {
   $('#ec-bubble').css('visibility', 'hidden');
-  $('#ec-bubble-text').html("");
+  $('#ec-bubble-text').html('');
 }
